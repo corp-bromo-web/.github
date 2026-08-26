@@ -1,0 +1,82 @@
+name: コーディングタスク
+description: コーディング・実装のタスクを起票します
+title: "[コーディング] "
+labels: ["coding"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        コーディング作業のタスクです。記入後、担当者と期日は Project 上で設定されます。
+
+  - type: input
+    id: client
+    attributes:
+      label: 案件名 / クライアント名
+      description: 営業から共有されている案件名を、略さずそのまま記入してください
+      placeholder: 例）株式会社サンプル コーポレートサイトリニューアル
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 作業内容
+      description: 実装する範囲を箇条書きで記入してください
+      placeholder: |
+        - トップページ 静的コーディング
+        - お知らせ一覧・詳細の WordPress 化
+        - お問い合わせフォーム設置
+    validations:
+      required: true
+
+  - type: input
+    id: figma
+    attributes:
+      label: デザインデータ（Figma URL）
+      description: 対応するデザインの Figma URL を記入してください
+      placeholder: https://www.figma.com/file/...
+    validations:
+      required: true
+
+  - type: input
+    id: design_issue
+    attributes:
+      label: 関連するデザインタスク
+      description: 対応するデザインタスクの Issue 番号を記入してください（例：#12）
+      placeholder: "#12"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: 実装環境
+      options:
+        - WordPress
+        - 静的 HTML/CSS
+        - 既存サイトの部分改修
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement
+    attributes:
+      label: 仕様・要件
+      description: 動的な機能、フォームの送信先、対応ブラウザなど、デザインからは読み取れない要件を記入してください
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・懸念事項
+      description: 確認が必要な点、判断に迷う点があれば記入してください
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        起票後、Project の「Process」を **コーディング**、「Status」を **新規** に設定してください。
