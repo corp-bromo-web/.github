@@ -1,0 +1,71 @@
+name: デザインタスク
+description: デザイン作成・修正のタスクを起票します
+title: "[デザイン] "
+labels: ["design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        デザイン作業のタスクです。記入後、担当者と期日は Project 上で設定されます。
+
+  - type: input
+    id: client
+    attributes:
+      label: 案件名 / クライアント名
+      description: 営業から共有されている案件名を、略さずそのまま記入してください
+      placeholder: 例）株式会社サンプル コーポレートサイトリニューアル
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 作業内容
+      description: 何を作るのかを箇条書きで記入してください
+      placeholder: |
+        - トップページ デザイン
+        - 下層ページ共通テンプレート
+        - スマートフォン版
+    validations:
+      required: true
+
+  - type: input
+    id: figma
+    attributes:
+      label: Figma URL
+      description: まだ未作成の場合は「未作成」と記入し、作成後にこの欄を編集してください
+      placeholder: https://www.figma.com/file/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: 参考資料・指示内容
+      description: 営業からの指示、参考サイト、支給素材の場所などを記入してください
+    validations:
+      required: false
+
+  - type: dropdown
+    id: deliverable
+    attributes:
+      label: 成果物の提出先
+      options:
+        - クライアント提出あり
+        - 社内確認のみ
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・懸念事項
+      description: 確認が必要な点、判断に迷う点があれば記入してください
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        起票後、Project の「Process」を **デザイン**、「Status」を **新規** に設定してください。
