@@ -1,0 +1,92 @@
+name: 保守・運用タスク
+description: サイトの保守・運用作業のタスクを起票します
+title: "[保守] "
+labels: ["maintenance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        保守・運用作業のタスクです。記入後、担当者と期日は Project 上で設定されます。
+
+  - type: input
+    id: site
+    attributes:
+      label: 対象サイト
+      description: サイト名と URL を記入してください
+      placeholder: 例）株式会社サンプル コーポレートサイト（https://example.com/）
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 作業の種類
+      options:
+        - WordPress 本体の更新
+        - プラグインの更新
+        - テーマの更新
+        - セキュリティアラートの対応
+        - サーバー・ドメインの更新手続き
+        - SSL 証明書の対応
+        - バックアップの確認
+        - 不具合の調査・修正
+        - その他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 緊急度
+      description: 判断に迷う場合は「要相談」を選び、増田に確認してください
+      options:
+        - 通常（定期作業）
+        - 高（脆弱性・表示不具合など）
+        - 緊急（サイト停止・改ざんの疑い）
+        - 要相談
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: 作業内容 / 事象
+      description: 何を行うか、または発生している事象を記入してください
+      placeholder: |
+        例）Contact Form 7 に脆弱性が報告されているため 5.9.8 へ更新
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: 想定される影響
+      description: 表示崩れ、機能停止の可能性など。ない場合は「なし」と記入
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 作業前チェック
+      options:
+        - label: 作業前のバックアップを取得した
+        - label: クライアントへの事前連絡が必要か確認した
+    validations:
+      required: false
+
+  - type: textarea
+    id: result
+    attributes:
+      label: 作業結果
+      description: 作業完了後に記入してください。確認した内容と、問題がなかったことを残します
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        起票後、Project の「Process」を **保守**、「Status」を **新規** に設定してください。
+
+        緊急度が「緊急」の場合は、Issue 起票と並行して増田に直接連絡してください。
