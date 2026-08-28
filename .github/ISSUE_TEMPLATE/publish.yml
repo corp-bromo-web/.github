@@ -1,0 +1,95 @@
+name: 公開タスク
+description: サイト・ページの公開作業のタスクを起票します
+title: "[公開] "
+labels: ["publish"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        公開作業のタスクです。記入後、担当者と期日は Project 上で設定されます。
+
+  - type: input
+    id: client
+    attributes:
+      label: 案件名 / クライアント名
+      description: 営業から共有されている案件名を、略さずそのまま記入してください
+      placeholder: 例）株式会社サンプル コーポレートサイトリニューアル
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: 公開先 URL
+      placeholder: https://example.com/
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 公開の種類
+      options:
+        - 新規サイト公開
+        - ページ追加
+        - 既存ページの更新
+        - リニューアル（差し替え）
+    validations:
+      required: true
+
+  - type: input
+    id: schedule
+    attributes:
+      label: 公開希望日時
+      description: 時間指定がある場合は時刻まで記入してください
+      placeholder: 例）2026-09-01 10:00
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 公開対象
+      description: 公開するページ・ファイルを記入してください
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 公開前チェック
+      description: 公開作業の直前に確認し、チェックを入れてください
+      options:
+        - label: クライアントの最終承認を得ている
+        - label: 表示確認を行った（PC / スマートフォン）
+        - label: リンク切れがないことを確認した
+        - label: フォームの送信テストを行った（該当する場合）
+        - label: title / description が設定されている
+        - label: OGP 画像が設定されている
+        - label: noindex が外れている
+        - label: Google Analytics / Search Console の設定を確認した
+        - label: 公開前のバックアップを取得した
+    validations:
+      required: false
+
+  - type: textarea
+    id: rollback
+    attributes:
+      label: 切り戻し手順
+      description: 問題が発生した場合の戻し方を記入してください（バックアップの場所など）
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・注意事項
+      description: DNS 切り替え、リダイレクト設定など、特に注意が必要な作業があれば記入してください
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        起票後、Project の「Process」を **公開**、「Status」を **新規** に設定してください。
